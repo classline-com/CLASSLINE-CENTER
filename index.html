@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b0d">
+  <meta name="description" content="مرکز محتوای کلاس‌لاین؛ آرشیو آزمون‌ها و کتاب‌های کمک‌آموزشی">
+  <title>CLASSLINE | مرکز محتوای کلاس‌لاین</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap');
+    :root{color-scheme:dark;--bg:#09090b;--panel:#141417;--panel2:#1b1b20;--red:#b80f16;--red2:#e12a32;--muted:#a5a5ad;--line:#29292f;--white:#f7f7f8}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -20%,rgba(184,15,22,.25),transparent 55%),var(--bg);color:var(--white);font-family:"Vazirmatn",Tahoma,sans-serif;min-height:100vh}
+    a{color:inherit;text-decoration:none}.wrap{width:min(960px,100%);margin:auto;padding:22px 18px 44px}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:34px}.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.5px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(145deg,#e12a32,#76080d);display:grid;place-items:center;font-size:15px;font-weight:900;box-shadow:0 7px 28px #b80f164d}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1.5px;font-weight:600}.year{font-size:12px;color:#ffb8bb;border:1px solid #792027;border-radius:999px;padding:7px 12px;background:#b80f161c}
+    .hero{padding:32px 25px;border:1px solid #4a1a1e;border-radius:25px;background:linear-gradient(125deg,rgba(184,15,22,.24),rgba(22,22,26,.95) 58%);position:relative;overflow:hidden;margin-bottom:26px}.hero:after{content:"CL";position:absolute;left:15px;bottom:-48px;font-size:150px;font-weight:900;color:#ffffff08;direction:ltr}.eyebrow{color:#ff9da2;font-size:11px;font-weight:800;letter-spacing:1.5px}.hero h1{font-size:clamp(25px,5vw,39px);line-height:1.55;margin:9px 0 7px;font-weight:900}.hero p{color:#c4c4cb;line-height:2;margin:0;max-width:600px;font-size:14px}
+    .searchbox{margin:22px 0 28px;position:relative}.searchbox input{width:100%;border:1px solid var(--line);border-radius:15px;background:#141418;color:white;padding:15px 48px 15px 16px;font:inherit;outline:none}.searchbox input:focus{border-color:#a52a30;box-shadow:0 0 0 3px #b80f1625}.searchicon{position:absolute;right:17px;top:14px;color:#999}
+    .section{margin:30px 0}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:14px}.sectionhead h2{font-size:20px;margin:0;font-weight:900}.sectionhead p{margin:4px 0 0;color:var(--muted);font-size:12px}.count{font-size:11px;color:#ffb8bb;background:#b80f161c;padding:5px 10px;border-radius:999px;white-space:nowrap}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.item{background:linear-gradient(145deg,#19191e,#111114);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;min-height:185px;transition:.2s}.item:hover{border-color:#8b252b;transform:translateY(-2px)}.tag{font-size:10px;color:#ff9da2;background:#b80f161c;border:1px solid #632026;padding:4px 9px;border-radius:999px;align-self:flex-start}.item h3{font-size:15px;line-height:1.8;margin:13px 0 6px;font-weight:800}.item p{font-size:12px;line-height:2;color:#aaaab2;margin:0 0 16px}.open{margin-top:auto;display:flex;align-items:center;justify-content:space-between;color:#ff858b;font-size:12px;font-weight:800}.open span:last-child{font-size:18px}
+    .note{border:1px solid #552025;background:linear-gradient(100deg,#351014,#191114);border-radius:18px;padding:20px;text-align:center;margin:35px 0 22px}.note strong{font-size:17px}.note p{margin:7px 0 0;color:#c9aeb0;font-size:12px}.footer{text-align:center;border-top:1px solid var(--line);padding-top:22px;color:#92929a;font-size:12px;line-height:2.2}.footer b{display:block;color:#eee;font-size:13px}.telegram{display:inline-flex;gap:7px;align-items:center;margin-top:9px;color:#ff9da2;font-weight:700}
+    .empty{display:none;text-align:center;color:var(--muted);padding:30px}.hidden{display:none!important}
+    @media(max-width:600px){.wrap{padding:16px 14px 32px}.top{margin-bottom:22px}.hero{padding:25px 19px}.cards{grid-template-columns:1fr}.item{min-height:160px}.sectionhead h2{font-size:18px}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top"><div class="brand"><div class="logo">CL</div><div>CLASSLINE<small>CONTENT CENTER</small></div></div><div class="year" id="year"></div></header>
+    <section class="hero"><div class="eyebrow">CLASSLINE • OFFICIAL CONTENT HUB</div><h1 id="title">مرکز محتوای کلاس‌لاین</h1><p id="subtitle"></p></section>
+    <div class="searchbox"><span class="searchicon">⌕</span><input id="search" type="search" placeholder="جست‌وجو بین آزمون‌ها و کتاب‌ها..." aria-label="جست‌وجو"></div>
+    <div id="sections"></div><div class="empty" id="empty">موردی با این عبارت پیدا نشد.</div>
+    <section class="note"><strong id="footerNote"></strong><p>این مجموعه به‌مرور تکمیل و به‌روزرسانی می‌شود.</p></section>
+    <footer class="footer"><b id="signature"></b><a class="telegram" href="https://t.me/CLASSLINE_COM" target="_blank" rel="noopener">✦ کانال تلگرام کلاس‌لاین: @CLASSLINE_COM</a><div style="margin-top:12px;font-size:10px">اختصاصی کلاس‌لاین</div></footer>
+  </main>
+  <script src="./data.js"></script>
+  <script>
+    const d=window.CLASSLINE_DATA||{};
+    document.getElementById('title').textContent=d.title||'مرکز محتوای کلاس‌لاین';
+    document.getElementById('subtitle').textContent=d.subtitle||'';
+    document.getElementById('year').textContent=d.updated||'';
+    document.getElementById('footerNote').textContent=d.footerNote||'';
+    document.getElementById('signature').innerText=d.signature||'';
+    const host=document.getElementById('sections'), search=document.getElementById('search'), empty=document.getElementById('empty');
+    function render(q=''){
+      host.innerHTML='';let shown=0;
+      (d.sections||[]).forEach(section=>{
+        const matches=(section.items||[]).filter(item=>(section.title+' '+item.title+' '+item.description+' '+(item.tag||'')).toLocaleLowerCase('fa').includes(q.toLocaleLowerCase('fa')));
+        if(!matches.length)return;shown+=matches.length;
+        const el=document.createElement('section');el.className='section';
+        const head=document.createElement('div');head.className='sectionhead';
+        const copy=document.createElement('div');const h=document.createElement('h2');h.textContent=section.title;const p=document.createElement('p');p.textContent=section.description||'';copy.append(h,p);
+        const count=document.createElement('span');count.className='count';count.textContent=matches.length+' مورد';head.append(copy,count);
+        const cards=document.createElement('div');cards.className='cards';
+        matches.forEach(item=>{
+          const card=document.createElement('article');card.className='item';
+          const tag=document.createElement('span');tag.className='tag';tag.textContent=item.tag||'کلاس‌لاین';
+          const title=document.createElement('h3');title.textContent=item.title;
+          const desc=document.createElement('p');desc.textContent=item.description||'';
+          const link=document.createElement('a');link.className='open';link.href=item.url;link.target='_blank';link.rel='noopener';link.innerHTML='<span>مشاهده محتوا</span><span>←</span>';
+          card.append(tag,title,desc,link);cards.append(card);
+        });
+        el.append(head,cards);host.append(el);
+      });
+      empty.style.display=shown?'none':'block';
+    }
+    search.addEventListener('input',e=>render(e.target.value.trim()));
+    render();
+    if(window.Telegram&&window.Telegram.WebApp){Telegram.WebApp.ready();Telegram.WebApp.expand();}
+  </script>
+</body>
+</html>
