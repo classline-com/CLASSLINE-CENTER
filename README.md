@@ -1,1 +1,16 @@
 # CLASSLINE-CENTER
+
+مرکز محتوای کلاس‌لاین؛ یک صفحه فارسی، راست‌چین و سازگار با موبایل و Telegram Mini App.
+
+## انتشار با GitHub Pages
+1. وارد **Settings → Pages** مخزن شوید.
+2. در بخش **Build and deployment** گزینه **Deploy from a branch** را انتخاب کنید.
+3. Branch را روی **main** و پوشه را روی **/(root)** قرار دهید و Save کنید.
+4. پس از انتشار، نشانی زیر در دسترس خواهد بود:
+   https://classline-com.github.io/CLASSLINE-CENTER/
+
+## ویرایش محتوا
+برای افزودن یا ویرایش موارد، فایل `data.js` را تغییر دهید. هر مورد درون یکی از بخش‌های `sections` قرار می‌گیرد و شامل `title`، `description`، `url` و در صورت نیاز `tag` است.
+
+## اتصال به تلگرام
+پس از فعال‌شدن GitHub Pages، نشانی سایت را در تنظیمات ربات از طریق BotFather به‌عنوان Web App URL ثبت کنید. توکن ربات را در پیام یا مخزن عمومی قرار ندهید.
