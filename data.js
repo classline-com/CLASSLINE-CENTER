@@ -19,7 +19,7 @@ window.CLASSLINE_DATA = {
       description: "مجموعه کتاب‌های منتخب و منابع کمک‌آموزشی",
       items: [
         { title: "پک کتاب‌های خیلی سبز", description: "مجموعه کتاب‌های خیلی سبز با کیفیت اصلی چاپخانه (PDF اصلی) و حجم بسیار کم.", url: "https://t.me/CLASSLINE_COM/3248", tag: "چاپ 1405–1406" },
-        { title: "آرشیو پک QB ماز", description: "مجموعه کتاب‌های QB ماز با کیفیت اصلی چاپخانه.", url: "https://t.me/CLASSLINE_COM/2792", tag: "QB ماز" }
+        { title: "آرشیو پک QB ماز", description: "مجموعه کتاب‌های QB ماز با کیفیت اصلی چاپخانه.", url: "https://t.me/CLASSLINE_COM/2792", tag: "چاپ 1405–1406" }
       ]
     }
   ],
