@@ -180,7 +180,8 @@ function go(u){
   }catch(e){}
   window.open(u, "_blank");
 }
-function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function en(s){return String(s==null?"":s).replace(/[\u06F0-\u06F9]/g,function(c){return c.charCodeAt(0)-1776}).replace(/[\u0660-\u0669]/g,function(c){return c.charCodeAt(0)-1632})}
+function esc(s){return en(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 
 // آیکن‌ها: فیلد اختیاری icon در هر آیتم (exam, pack, book, qb, flask, planner, maker, link)
 var I = {
@@ -207,8 +208,8 @@ var secs=D.sections||[];
 var total=0; secs.forEach(function(s){total+=(s.items||[]).length});
 
 document.getElementById("title").innerHTML=esc(D.title||"مرکز محتوای کلاس‌لاین").replace("کلاس‌لاین","<em>کلاس‌لاین</em>");
-document.getElementById("subtitle").textContent=D.subtitle||"";
-document.getElementById("foot").textContent=D.footerNote||"";
+document.getElementById("subtitle").textContent=en(D.subtitle||"");
+document.getElementById("foot").textContent=en(D.footerNote||"");
 if(D.signature) document.getElementById("sig").innerHTML=esc(D.signature).replace(/\n/g,"<br>")+'<br><span style="opacity:.6">CLASSLINE</span>';
 document.getElementById("stats").innerHTML=secs.map(function(s){return '<div class="stat"><b>'+(s.items||[]).length+'</b><span>'+esc(s.title)+'</span></div>'}).join("")
   +(D.updated?'<div class="stat"><b style="font-size:17px;padding-top:4px;display:block">'+esc(D.updated)+'</b><span>سال تحصیلی</span></div>':'');
