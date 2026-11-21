@@ -4,6 +4,14 @@ window.CLASSLINE_DATA = {
   updated: "1405–1406",
   sections: [
     {
+      id: "tools",
+      title: "ابزارها",
+      description: "ابزارهای رایگان کلاس‌لاین",
+      items: [
+        { title: "درصدگیر کنکور", description: "درصد هر درس و درصد کل را با نمره منفی یا بدون آن حساب کن.", url: "./percent.html", tag: "رایگان", icon: "percent", tint: "#f59e0b", noBig: true }
+      ]
+    },
+    {
       id: "exams",
       title: "آرشیو آزمون‌ها",
       description: "آزمون‌های آزمایشی به تفکیک مؤسسه و پایه تحصیلی",

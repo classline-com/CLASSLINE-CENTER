@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>درصدگیر | کلاس‌لاین</title>
+<meta name="theme-color" content="#050507">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--bg:#050507;--red:#ff2a3d;--line:rgba(255,255,255,.1);--text:#f5f2f2;--mut:#a99ea0;--ok:#22c55e;--warn:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{overflow-x:hidden}
+body{font-family:Vazirmatn,Tahoma,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;min-height:100dvh;-webkit-text-size-adjust:100%;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+a{color:inherit;text-decoration:none}
+.bg{position:fixed;top:0;right:0;bottom:0;left:0;z-index:-1;overflow:hidden;transform:translateZ(0);pointer-events:none}
+.bg i{position:absolute;border-radius:50%;filter:blur(70px);animation:fl 16s ease-in-out infinite}
+.bg i:nth-child(1){width:520px;height:520px;background:#c1121f;opacity:.45;top:-220px;right:-120px}
+.bg i:nth-child(2){width:380px;height:380px;background:#4a0610;opacity:.8;bottom:-140px;left:-140px;animation-delay:-6s}
+.bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;opacity:.2;-webkit-mask-image:radial-gradient(ellipse at 50% 0,#000 5%,transparent 65%);mask-image:radial-gradient(ellipse at 50% 0,#000 5%,transparent 65%)}
+@keyframes fl{50%{transform:translate(40px,30px) scale(1.12)}}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#fff;background:rgba(255,255,255,.07);border:1px solid var(--line);height:38px;padding:0 14px;border-radius:12px}
+.back svg{width:16px}
+.top img{height:26px;display:block;filter:drop-shadow(0 0 12px rgba(255,42,61,.5))}
+h1{font-size:clamp(26px,7vw,38px);font-weight:900;margin:6px 0 4px;background:linear-gradient(180deg,#fff 30%,#ff8a95 120%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);font-size:13px;line-height:1.9}
+.panel{margin-top:16px;padding:16px;border-radius:22px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,42,61,.1),rgba(255,255,255,.04) 60%)}
+/* سوئیچ نمره منفی */
+.sw{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;user-select:none}
+.sw b{display:block;font-size:14.5px}
+.sw small{display:block;color:var(--mut);font-size:12px;line-height:1.8;margin-top:2px}
+.tg{flex:none;position:relative;width:54px;height:30px;border-radius:30px;background:rgba(255,255,255,.14);border:1px solid var(--line);transition:.25s}
+.tg::after{content:"";position:absolute;top:3px;right:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.25s;box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.sw[aria-checked="true"] .tg{background:linear-gradient(135deg,#ff2a3d,#c4122a);border-color:transparent;box-shadow:0 0 18px -4px var(--red)}
+.sw[aria-checked="true"] .tg::after{right:27px}
+/* ردیف درس */
+.row{margin-top:12px;padding:14px;border-radius:18px;background:rgba(0,0,0,.35);border:1px solid var(--line);animation:in .35s both}
+@keyframes in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.row.bad{border-color:rgba(245,158,11,.7)}
+.rh{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.rh input{flex:1;min-width:0}
+.del{flex:none;width:36px;height:36px;border-radius:11px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--mut);cursor:pointer;display:grid;place-items:center}
+.del svg{width:16px}
+.del:hover{color:var(--red);border-color:rgba(255,42,61,.5)}
+.f{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.f label{display:block;font-size:11.5px;color:var(--mut);margin-bottom:5px}
+input{width:100%;font:inherit;font-size:16px!important;color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:12px;height:46px;padding:0 12px;outline:none;text-align:center;transition:.2s;-webkit-appearance:none;appearance:none}
+input.nm{text-align:right}
+input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(255,42,61,.16)}
+.rr{display:flex;align-items:center;justify-content:space-between;margin-top:10px;font-size:12.5px;color:var(--mut)}
+.rr b{font:800 17px Arial,sans-serif;color:#fff;direction:ltr}
+.rr .warn{color:var(--warn)}
+.btns{display:flex;gap:8px;margin-top:14px}
+.btn{flex:1;height:46px;font:inherit;font-size:13.5px;font-weight:700;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;transition:.2s}
+.btn.pri{background:linear-gradient(135deg,#ff2a3d,#c4122a);border-color:transparent;box-shadow:0 10px 24px -10px var(--red)}
+.btn:active{transform:scale(.98)}
+/* نتیجه */
+.res{margin-top:16px;text-align:center;padding:22px 16px 18px;border-radius:26px;border:1px solid rgba(255,42,61,.4);background:linear-gradient(160deg,rgba(255,42,61,.18),rgba(255,255,255,.04) 60%);box-shadow:0 24px 60px -30px var(--red)}
+.ring{position:relative;width:190px;height:190px;margin:0 auto 10px}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.ring .tr{stroke:rgba(255,255,255,.1)}
+.ring .pg{stroke:var(--c,#ff2a3d);transition:stroke-dashoffset .6s,stroke .3s}
+.ring::before{content:"";position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle,rgba(255,42,61,.2),transparent 70%);opacity:.9}
+.ring .v{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring .v b{font:900 44px/1 Arial,sans-serif;direction:ltr;text-shadow:0 0 20px rgba(255,42,61,.4)}
+.ring .v span{font-size:12px;color:var(--mut);margin-top:6px}
+.mode{display:inline-block;font-size:11.5px;padding:4px 12px;border-radius:20px;background:rgba(255,255,255,.08);border:1px solid var(--line);color:#ffd5d9}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.stats div{padding:10px 4px;border-radius:14px;background:rgba(0,0,0,.35);border:1px solid var(--line)}
+.stats b{display:block;font:800 18px Arial,sans-serif;direction:ltr}
+.stats span{display:block;font-size:11px;color:var(--mut);margin-top:3px}
+.formula{margin-top:14px;font-size:11.8px;color:var(--mut);line-height:2;direction:rtl}
+.formula code{font-family:Arial,sans-serif;direction:ltr;display:inline-block;color:#fff;background:rgba(255,255,255,.07);padding:1px 8px;border-radius:8px}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="bg"><i></i><i></i></div>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="./" id="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>بازگشت</a>
+    <img src="assets/logo.png" alt="CLASSLINE" onerror="this.onerror=null;this.src='assets/classline-logo.webp'">
+  </div>
+
+  <h1>درصدگیر</h1>
+  <p class="lead">تعداد کل، درست و غلط را وارد کن؛ درصد هر درس و درصد کل همان لحظه حساب می‌شود.</p>
+
+  <div class="panel">
+    <div class="sw" id="neg" role="switch" aria-checked="true" tabindex="0">
+      <div><b>نمره منفی</b><small id="negNote"></small></div>
+      <span class="tg"></span>
+    </div>
+  </div>
+
+  <div id="rows"></div>
+
+  <div class="btns">
+    <button class="btn pri" id="add" type="button">+ افزودن درس</button>
+    <button class="btn" id="clr" type="button">پاک کردن همه</button>
+  </div>
+
+  <section class="res" id="res">
+    <div class="ring" id="ring" style="--c:#ff2a3d">
+      <svg viewBox="0 0 120 120"><circle class="tr" cx="60" cy="60" r="52" fill="none" stroke-width="10"/><circle class="pg" id="pg" cx="60" cy="60" r="52" fill="none" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.73" stroke-dashoffset="326.73"/></svg>
+      <div class="v"><b id="pct">0%</b><span id="lbl">درصد کل</span></div>
+    </div>
+    <span class="mode" id="mode"></span>
+    <div class="stats">
+      <div><b id="sT">0</b><span>کل</span></div>
+      <div><b id="sC" style="color:#4ade80">0</b><span>درست</span></div>
+      <div><b id="sW" style="color:#ff6b78">0</b><span>غلط</span></div>
+      <div><b id="sN">0</b><span>نزده</span></div>
+    </div>
+    <p class="formula" id="formula"></p>
+  </section>
+</div>
+
+<script>
+var tg=window.Telegram&&window.Telegram.WebApp;
+if(tg){try{tg.ready()}catch(e){} try{tg.expand()}catch(e){} try{tg.setHeaderColor("#050507")}catch(e){} try{tg.setBackgroundColor("#050507")}catch(e){} try{tg.disableVerticalSwipes&&tg.disableVerticalSwipes()}catch(e){}
+  try{ if(tg.BackButton){tg.BackButton.show();tg.BackButton.onClick(function(){location.href="./"})} }catch(e){} }
+
+function en(s){return String(s==null?"":s).replace(/[۰-۹]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-1776+48)}).replace(/[٠-٩]/g,function(c){return String.fromCharCode(c.charCodeAt(0)-1632+48)})}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function num(v){var n=parseInt(en(v).replace(/[^0-9]/g,""),10);return isNaN(n)?0:n}
+function fmt(n){var r=Math.round(n*100)/100;return (Object.is(r,-0)?0:r).toString()}
+
+var KEY="cl_pc_v1", st={neg:true,rows:[{n:"",t:"",c:"",w:""}]};
+try{var sv=JSON.parse(localStorage.getItem(KEY)||"null"); if(sv&&Array.isArray(sv.rows)&&sv.rows.length) st=sv}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+
+var rowsEl=document.getElementById("rows");
+var TRASH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/></svg>';
+function build(){
+  rowsEl.innerHTML=st.rows.map(function(r,i){
+    return '<div class="row" data-i="'+i+'"><div class="rh"><input class="nm" data-k="n" placeholder="نام درس (اختیاری) — درس '+(i+1)+'" value="'+esc(r.n)+'" maxlength="30">'+
+      (st.rows.length>1?'<button class="del" type="button" aria-label="حذف">'+TRASH+'</button>':'')+'</div>'+
+      '<div class="f"><div><label>تعداد کل</label><input data-k="t" inputmode="numeric" pattern="[0-9]*" placeholder="0" value="'+esc(r.t)+'"></div>'+
+      '<div><label>درست</label><input data-k="c" inputmode="numeric" pattern="[0-9]*" placeholder="0" value="'+esc(r.c)+'"></div>'+
+      '<div><label>غلط</label><input data-k="w" inputmode="numeric" pattern="[0-9]*" placeholder="0" value="'+esc(r.w)+'"></div></div>'+
+      '<div class="rr"><span class="rl">درصد این درس</span><b class="rp">0%</b></div></div>';
+  }).join("");
+  calc();
+}
+function pctOf(t,c,w){ if(t<=0) return 0; return ((st.neg? c-w/3 : c)/t)*100 }
+
+function calc(){
+  var T=0,C=0,W=0,NET=0;
+  [].forEach.call(rowsEl.children,function(el,i){
+    var r=st.rows[i], t=num(r.t), c=num(r.c), w=num(r.w), bad=(c+w>t), rp=el.querySelector(".rp"), rl=el.querySelector(".rl");
+    el.classList.toggle("bad",bad);
+    if(bad){rp.textContent="—";rl.textContent="جمع درست و غلط از تعداد کل بیشتر است";rl.className="rl warn"}
+    else{rl.textContent="درصد این درس";rl.className="rl";rp.textContent=(t>0?fmt(pctOf(t,c,w)):"0")+"%";
+      T+=t;C+=c;W+=w;NET+=st.neg?(c-w/3):c}
+  });
+  var p=T>0?NET/T*100:0, shown=Math.max(0,Math.min(100,p));
+  document.getElementById("pct").textContent=fmt(p)+"%";
+  document.getElementById("lbl").textContent=st.rows.length>1?"درصد کل":"درصد";
+  document.getElementById("sT").textContent=T; document.getElementById("sC").textContent=C;
+  document.getElementById("sW").textContent=W; document.getElementById("sN").textContent=Math.max(0,T-C-W);
+  var pg=document.getElementById("pg"), L=326.73; pg.style.strokeDashoffset=L-(L*shown/100);
+  document.getElementById("ring").style.setProperty("--c",p>=70?"#22c55e":p>=40?"#f59e0b":p<0?"#ff6b78":"#ff2a3d");
+  document.getElementById("mode").textContent=st.neg?"با نمره منفی":"بدون نمره منفی";
+  document.getElementById("formula").innerHTML=st.neg
+    ?'درصد = <code>((درست − غلط ÷ 3) ÷ کل) × 100</code><br>هر 3 غلط، یک درست را خنثی می‌کند.'
+    :'درصد = <code>(درست ÷ کل) × 100</code><br>غلط‌ها در درصد اثری ندارند.';
+  document.getElementById("negNote").textContent=st.neg?"روشن: هر 3 غلط یک درست را کم می‌کند":"خاموش: فقط پاسخ‌های درست حساب می‌شود";
+  document.getElementById("neg").setAttribute("aria-checked",st.neg?"true":"false");
+}
+rowsEl.addEventListener("input",function(e){
+  var el=e.target.closest("input"); if(!el)return; var i=+el.closest(".row").dataset.i, k=el.dataset.k;
+  if(k!=="n"){var v=en(el.value).replace(/[^0-9]/g,"").slice(0,4); if(el.value!==v) el.value=v; st.rows[i][k]=v}
+  else st.rows[i].n=el.value;
+  save();calc();
+});
+rowsEl.addEventListener("click",function(e){var d=e.target.closest(".del"); if(!d)return; st.rows.splice(+d.closest(".row").dataset.i,1); save(); build()});
+function tog(){st.neg=!st.neg;save();calc()}
+var neg=document.getElementById("neg"); neg.onclick=tog; neg.onkeydown=function(e){if(e.key===" "||e.key==="Enter"){e.preventDefault();tog()}};
+document.getElementById("add").onclick=function(){if(st.rows.length>=20)return;st.rows.push({n:"",t:"",c:"",w:""});save();build();var l=rowsEl.lastElementChild;l&&l.scrollIntoView({behavior:"smooth",block:"center"})};
+document.getElementById("clr").onclick=function(){st.rows=[{n:"",t:"",c:"",w:""}];save();build()};
+build();
+</script>
+</body>
+</html>
