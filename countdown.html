@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>روز شمار کنکور | کلاس‌لاین</title>
+<meta name="theme-color" content="#050507">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+
+:root{--bg:#050507;--red:#ff2a3d;--line:rgba(255,255,255,.1);--text:#f5f2f2;--mut:#a99ea0;--ok:#22c55e;--warn:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{overflow-x:hidden}
+body{font-family:Vazirmatn,Tahoma,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;min-height:100dvh;-webkit-text-size-adjust:100%;padding-bottom:calc(40px + env(safe-area-inset-bottom))}
+a{color:inherit;text-decoration:none}
+.bg{position:fixed;top:0;right:0;bottom:0;left:0;z-index:-1;overflow:hidden;transform:translateZ(0);pointer-events:none}
+.bg i{position:absolute;border-radius:50%;filter:blur(70px);animation:fl 16s ease-in-out infinite}
+.bg i:nth-child(1){width:520px;height:520px;background:#c1121f;opacity:.45;top:-220px;right:-120px}
+.bg i:nth-child(2){width:380px;height:380px;background:#4a0610;opacity:.8;bottom:-140px;left:-140px;animation-delay:-6s}
+.bg::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;opacity:.2;-webkit-mask-image:radial-gradient(ellipse at 50% 0,#000 5%,transparent 65%);mask-image:radial-gradient(ellipse at 50% 0,#000 5%,transparent 65%)}
+@keyframes fl{50%{transform:translate(40px,30px) scale(1.12)}}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.back{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:#fff;background:rgba(255,255,255,.07);border:1px solid var(--line);height:38px;padding:0 14px;border-radius:12px}
+.back svg{width:16px}
+.top img{height:26px;display:block;filter:drop-shadow(0 0 12px rgba(255,42,61,.5))}
+h1{font-size:clamp(26px,7vw,38px);font-weight:900;margin:6px 0 4px;background:linear-gradient(180deg,#fff 30%,#ff8a95 120%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--mut);font-size:13px;line-height:1.9}
+/* ===== روز شمار کنکور ===== */
+.cd{position:relative;margin:6px 0 4px;padding:20px 16px 18px;border-radius:26px;overflow:hidden;border:1px solid rgba(255,42,61,.35);
+  background:linear-gradient(160deg,rgba(255,42,61,.16),rgba(255,255,255,.04) 55%);box-shadow:0 24px 60px -28px var(--red)}
+.cd::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,42,61,.35),transparent 65%);top:-130px;left:50%;transform:translateX(-50%);pointer-events:none}
+.cd-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cd-head h2{font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px}
+.cd-head h2 svg{width:20px;color:var(--red);filter:drop-shadow(0 0 6px var(--red))}
+.snd{flex:none;display:inline-flex;align-items:center;gap:6px;font:inherit;font-size:11.5px;color:#fff;background:rgba(255,255,255,.07);border:1px solid var(--line);height:34px;padding:0 12px;border-radius:12px;cursor:pointer;transition:.2s}
+.snd svg{width:17px}
+.snd.off{color:var(--mut)}
+.snd:hover{border-color:rgba(255,42,61,.5)}
+.seg{position:relative;display:flex;gap:6px;margin:14px 0 16px;padding:5px;border-radius:16px;background:rgba(0,0,0,.35);border:1px solid var(--line)}
+.seg button{flex:1;height:38px;font:inherit;font-size:13.5px;font-weight:700;color:var(--mut);background:none;border:0;border-radius:12px;cursor:pointer;transition:.2s}
+.seg button.on{color:#fff;background:linear-gradient(135deg,#ff2a3d,#c4122a);box-shadow:0 8px 20px -8px var(--red)}
+.cd-date{position:relative;text-align:center;font-size:12.5px;color:var(--mut);line-height:1.9}
+.cd-date b{color:#fff;font-weight:700}
+.units{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0 4px;direction:ltr}
+.u{padding:14px 4px 10px;border-radius:18px;text-align:center;background:rgba(0,0,0,.38);border:1px solid var(--line);box-shadow:inset 0 1px 0 rgba(255,255,255,.07)}
+.u b{display:block;font:900 clamp(26px,8.4vw,46px)/1.1 Arial,sans-serif;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:.5px;text-shadow:0 0 18px rgba(255,42,61,.45)}
+.u span{display:block;margin-top:6px;font-size:11.5px;color:var(--mut)}
+.u.d b{color:#ff6b78}
+.u.s{border-color:rgba(255,42,61,.45)}
+.u.s b{animation:pop .5s}
+@keyframes pop{0%{transform:scale(1.18);color:var(--red)}100%{transform:none}}
+.cd-note{position:relative;text-align:center;font-size:12px;color:var(--mut);margin-top:12px}
+.cd-done{display:none;text-align:center;font-weight:800;font-size:18px;color:#fff;padding:22px 0 10px}
+@media(max-width:380px){.units{gap:6px}.snd span{display:none}}
+
+.cd{margin-top:18px}
+.u b{font-size:clamp(28px,9vw,52px)}
+</style>
+</head>
+<body>
+<div class="bg"><i></i><i></i></div>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="./" id="back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>بازگشت</a>
+    <img src="assets/logo.png" alt="CLASSLINE" onerror="this.onerror=null;this.src='assets/classline-logo.webp'">
+  </div>
+  <h1>روز شمار کنکور</h1>
+  <p class="lead">هر بار که وارد این صفحه شوی، زمان باقی‌مانده تا کنکور را به روز، ساعت و دقیقه می‌بینی.</p>
+
+  <section class="cd" id="countdown">
+    <div class="cd-head">
+      <h2><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6M12 2v3"/></svg><span id="cdTitle">روز شمار کنکور</span></h2>
+      <button class="snd" id="snd" type="button" aria-label="صدای تیک‌تاک"><svg id="sndIc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></svg><span>تیک‌تاک</span></button>
+    </div>
+    <div class="seg" id="seg"></div>
+    <div class="cd-date" id="cdDate"></div>
+    <div class="units" id="units">
+      <div class="u d"><b id="vD">0</b><span>روز</span></div>
+      <div class="u"><b id="vH">00</b><span>ساعت</span></div>
+      <div class="u"><b id="vM">00</b><span>دقیقه</span></div>
+      <div class="u s"><b id="vS">00</b><span>ثانیه</span></div>
+    </div>
+    <div class="cd-done" id="cdDone">زمان آزمون فرا رسیده است. موفق باشید!</div>
+    <div class="cd-note" id="cdNote"></div>
+  </section>
+</div>
+<script src="./data.js"></script>
+<script>
+var tg=window.Telegram&&window.Telegram.WebApp;
+if(tg){try{tg.ready()}catch(e){} try{tg.expand()}catch(e){} try{tg.setHeaderColor("#050507")}catch(e){} try{tg.setBackgroundColor("#050507")}catch(e){} try{tg.disableVerticalSwipes&&tg.disableVerticalSwipes()}catch(e){}
+  try{ if(tg.BackButton){tg.BackButton.show();tg.BackButton.onClick(function(){location.href="./"})} }catch(e){} }
+function en(s){return String(s==null?"":s).replace(/[\u06F0-\u06F9]/g,function(c){return c.charCodeAt(0)-1776}).replace(/[\u0660-\u0669]/g,function(c){return c.charCodeAt(0)-1632})}
+function esc(s){return en(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+var D=window.CLASSLINE_DATA||{};
+/* ===== روز شمار کنکور ===== */
+(function(){
+  var K=D.konkur; if(!K||!K.exams||!K.exams.length){document.getElementById("countdown").style.display="none";return}
+  var MONTHS=["فروردین","اردیبهشت","خرداد","تیر","مرداد","شهریور","مهر","آبان","آذر","دی","بهمن","اسفند"];
+  document.getElementById("cdTitle").textContent=en(K.title||"روز شمار کنکور");
+  var seg=document.getElementById("seg"), cur=K.exams[0].id;
+  try{var sv=localStorage.getItem("cl_exam"); if(sv&&K.exams.some(function(x){return x.id===sv})) cur=sv}catch(e){}
+  seg.innerHTML=K.exams.map(function(x){return '<button type="button" data-id="'+esc(x.id)+'">'+esc(x.title)+'</button>'}).join("");
+  function exam(){return K.exams.filter(function(x){return x.id===cur})[0]||K.exams[0]}
+  function two(n){return n<10?"0"+n:""+n}
+  function todayShamsi(){
+    try{
+      var pf=new Intl.DateTimeFormat("en-US-u-ca-persian-nu-latn",{timeZone:"Asia/Tehran",year:"numeric",month:"numeric",day:"numeric"}).formatToParts(new Date()),o={};
+      pf.forEach(function(p){o[p.type]=p.value});
+      var wd=new Intl.DateTimeFormat("fa-IR",{timeZone:"Asia/Tehran",weekday:"long"}).format(new Date());
+      return wd+" "+o.day+" "+MONTHS[+o.month-1]+" "+o.year;
+    }catch(e){return ""}
+  }
+  function head(){
+    var x=exam();
+    document.getElementById("cdDate").innerHTML='موعد کنکور <b>'+esc(x.title)+'</b>: <b>'+esc(x.shamsi)+'</b> ساعت <b>'+esc(x.time)+'</b> به وقت تهران';
+    var t=todayShamsi(); document.getElementById("cdNote").textContent=t?("امروز: "+en(t)):"";
+    [].forEach.call(seg.children,function(b){b.classList.toggle("on",b.dataset.id===cur)});
+  }
+  var lastS=-1;
+  function update(){
+    var diff=new Date(exam().iso).getTime()-Date.now(), units=document.getElementById("units"), done=document.getElementById("cdDone");
+    if(isNaN(diff)){return}
+    if(diff<=0){units.style.display="none";done.style.display="block";return}
+    units.style.display="";done.style.display="none";
+    var t=Math.floor(diff/1000), d=Math.floor(t/86400), h=Math.floor(t%86400/3600), m=Math.floor(t%3600/60), sc=t%60;
+    document.getElementById("vD").textContent=d;
+    document.getElementById("vH").textContent=two(h);
+    document.getElementById("vM").textContent=two(m);
+    var vs=document.getElementById("vS");
+    if(sc!==lastS){vs.textContent=two(sc);vs.style.animation="none";void vs.offsetWidth;vs.style.animation="";lastS=sc}
+  }
+  seg.onclick=function(e){var b=e.target.closest("button");if(!b)return;cur=b.dataset.id;try{localStorage.setItem("cl_exam",cur)}catch(x){}head();lastS=-1;update()};
+
+  /* صدای تیک‌تاک (Web Audio، بدون فایل). مرورگر تا اولین لمس اجازه صدا نمی‌دهد. */
+  var ctx=null, on=true, flip=false;
+  try{ if(localStorage.getItem("cl_snd")==="0") on=false }catch(e){}
+  var snd=document.getElementById("snd"), ic=document.getElementById("sndIc");
+  function icon(){
+    ic.innerHTML=on?'<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>':'<path d="M11 5L6 9H3v6h3l5 4z"/><path d="M16 9l5 6M21 9l-5 6"/>';
+    snd.classList.toggle("off",!on); snd.setAttribute("aria-pressed",on?"true":"false");
+  }
+  function ensure(){
+    if(!ctx){var AC=window.AudioContext||window.webkitAudioContext; if(!AC)return false; try{ctx=new AC()}catch(e){return false}}
+    if(ctx.state==="suspended"){try{ctx.resume()}catch(e){}}
+    return ctx.state!=="closed";
+  }
+  function tick(){
+    if(!on||document.hidden||!ctx||ctx.state!=="running")return;
+    var t=ctx.currentTime, f=flip?1250:1750; flip=!flip;
+    var o=ctx.createOscillator(), g=ctx.createGain();
+    o.type="square"; o.frequency.setValueAtTime(f,t); o.frequency.exponentialRampToValueAtTime(f*.55,t+.04);
+    g.gain.setValueAtTime(0.0001,t); g.gain.exponentialRampToValueAtTime(0.09,t+.003); g.gain.exponentialRampToValueAtTime(0.0001,t+.06);
+    var bp=ctx.createBiquadFilter(); bp.type="bandpass"; bp.frequency.value=f; bp.Q.value=2.2;
+    o.connect(bp); bp.connect(g); g.connect(ctx.destination); o.start(t); o.stop(t+.07);
+  }
+  function unlock(){ if(on) ensure(); }
+  ["pointerdown","touchstart","keydown"].forEach(function(ev){addEventListener(ev,unlock,{passive:true})});
+  snd.onclick=function(e){e.stopPropagation();on=!on;try{localStorage.setItem("cl_snd",on?"1":"0")}catch(x){}icon();if(on){ensure();tick()}};
+
+  /* هر ثانیه دقیقاً روی مرز ثانیه */
+  function loop(){ update(); tick(); setTimeout(loop,1000-(Date.now()%1000)+5); }
+  document.addEventListener("visibilitychange",function(){update()});
+  icon(); head(); loop();
+})();
+
+</script>
+</body>
+</html>

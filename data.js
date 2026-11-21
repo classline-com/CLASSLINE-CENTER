@@ -8,6 +8,7 @@ window.CLASSLINE_DATA = {
       title: "ابزارها",
       description: "ابزارهای رایگان کلاس‌لاین",
       items: [
+        { title: "روز شمار کنکور", description: "چند روز، ساعت و دقیقه تا کنکور مانده؟ با صدای تیک‌تاک.", url: "./countdown.html", icon: "timer", tint: "#ff2a3d", noBig: true },
         { title: "درصدگیر کنکور", description: "درصد هر درس و درصد کل را با نمره منفی یا بدون آن حساب کن.", url: "./percent.html", icon: "percent", tint: "#f59e0b", noBig: true }
       ]
     },
